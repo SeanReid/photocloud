@@ -7,10 +7,20 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <% if user_signed_in? %>
+    Signed in as <%= current_user.email %>
+  <% end %>
+    <% if user_signed_in? %>
+  <%= link_to("Not You?", destroy_user_session_path, :method => :delete) %>
+  <%= link_to "Sign in with Flickr", connection_omniauth_authorize_path(:flickr) %>
+    <% else %>
+    <p class="notice"><%= notice %></p>
+    <font color="red" class="alert"><%= alert %></font>
+  <% end %>
 
+<div class="container">
 <%= yield %>
+</div>
 
 </body>
 </html>
