@@ -29,7 +29,9 @@ gem 'spring',        group: :development
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-flickr'
+gem 'flickraw'
 gem 'omniauth-facebook'
 gem 'omniauth-dropbox'
+gem 'dotenv-rails'
 
 gem 'pry'
