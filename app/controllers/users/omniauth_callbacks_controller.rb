@@ -42,16 +42,16 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     uid = deets["uid"]
     name = deets.fetch("info").fetch("name")
     token = deets.fetch("credentials").fetch("token")
-    # find/create user
     binding.pry
+    # find/create user
 
-    connection = current_user.connections.find_by uid: uid, provider: "dropbox"
+    connection = current_user.connections.find_by uid: uid.to_s, provider: "dropbox"
     if connection
       connection.update name: name, token: token
     else
       connection = current_user.connections.create! uid: uid, name: name, token: token, provider: "dropbox"
     end
     redirect_to photos_path
-    set_flash_message(:notice, :success, :kind => "Dropbox") if is_navigational_format?
+    set_flash_message(:notice, :success, :kind => "dropbox") if is_navigational_format?
   end
 end

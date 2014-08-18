@@ -30,6 +30,13 @@ GEM
     addressable (2.3.6)
     arel (5.0.1.20140414130214)
     bcrypt (3.1.7)
+    bitters (0.9.3)
+      bourbon (>= 3.1)
+      sass (>= 3.2)
+      thor
+    bourbon (3.2.3)
+      sass (~> 3.2)
+      thor
     builder (3.2.2)
     coderay (1.1.0)
     coffee-rails (4.0.1)
@@ -50,6 +57,8 @@ GEM
     dotenv-deployment (0.0.2)
     dotenv-rails (0.11.1)
       dotenv (= 0.11.1)
+    dropbox-sdk (1.6.4)
+      json
     erubis (2.7.0)
     execjs (2.2.1)
     fancybox2-rails (0.2.8)
@@ -81,6 +90,9 @@ GEM
     multi_json (1.10.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
+    neat (1.5.1)
+      bourbon (>= 3.1)
+      sass (~> 3.2.19)
     oauth (0.4.7)
     oauth2 (1.0.0)
       faraday (>= 0.8, < 0.10)
@@ -173,14 +185,18 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bitters
+  bourbon
   coffee-rails (~> 4.0.0)
   devise
   dotenv-rails
+  dropbox-sdk
   fancybox2-rails (~> 0.2.8)
   flickraw
   jbuilder (~> 2.0)
   jquery-rails
   koala (~> 1.10.0rc)
+  neat
   omniauth
   omniauth-dropbox
   omniauth-facebook

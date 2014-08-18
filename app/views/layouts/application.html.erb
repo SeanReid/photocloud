@@ -13,10 +13,8 @@
   <% if user_signed_in? %>
     <%= link_to "Not You?", destroy_user_session_path, :method => :delete %>
     <%= link_to "Connect to Flickr", user_omniauth_authorize_path(:flickr) unless current_user.flickr? %>
-    <%= link_to user_omniauth_authorize_path(:facebook) do %>
-      <%= image_tag "http://sociallygold.com/wp-content/uploads/2014/05/facebook-login-button.png" %>
-    <% end %>
-    <%= link_to "Connect to Dropbox", user_omniauth_authorize_path(:dropbox) %>
+    <%= link_to "Connect to FB", user_omniauth_authorize_path(:facebook) unless current_user.facebook?  %>
+    <%= link_to "Connect to Dropbox", user_omniauth_authorize_path(:dropbox) unless current_user.dropbox? %>
 
   <% end %>
   <% if notice %><p class="notice"><%= notice %></p><% end %>

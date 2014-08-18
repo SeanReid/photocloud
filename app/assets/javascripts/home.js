@@ -1,6 +1,3 @@
-$(window).ready(function() {
-	$(".fancybox").fancybox({
-		openEffect	: 'none',
-		closeEffect	: 'none'
-	});
+$(document).ready(function() {
+    $(".imgLiquidFill").imgLiquid();
 });

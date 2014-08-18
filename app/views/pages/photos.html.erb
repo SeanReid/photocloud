@@ -1,14 +1,35 @@
+
+
+<h1>Dropbox:</h1>
+<% @db_photos.each do |binary| %>
+<div class="boxSep" >
+  <div class="imgLiquidFill imgLiquid" style="width:250px; height:250px;">
+    <img src='data:image/png;base64,<%=Base64.encode64 binary%>' />
+  </div>
+</div>
+<% end %>
+
 <h1>FB:</h1>
-<% @fb_photos.each do |album| %>
-  <% album["photos"]["data"].each do |photo| %>
-    <%= image_tag photo["source"], class: 'my-img' %>
+<% @fb_photos.take(5).each do |album| %>
+  <% album["photos"]["data"].take(1).each do |photo| %>
+    <div class="boxSep" >
+      <div class="imgLiquidFill imgLiquid" style="width:250px; height:250px;">
+        <%= image_tag photo["source"], class: 'my-img' %>
+      </div>
+    </div>
   <% end %>
 <% end %>
 <h1> Flickr: </h1>
 <div class="thumbnail">
-<%  @photos.photo.take(6).each do |photo| %>
-  <%=
-    info = flickr.photos.getInfo photo_id: photo.id
-    image_tag FlickRaw.url_b(info), class: 'my-img fancybox'
-   %>
+<%  @photos.photo.take(5).each do |photo| %>
+<div class="boxSep" >
+  <div class="imgLiquidFill imgLiquid" style="width:250px; height:250px;">
+    <%=
+      info = flickr.photos.getInfo photo_id: photo.id
+      image_tag FlickRaw.url_b(info), class: 'my-img fancybox'
+     %>
+  </div>
+</div>
 <% end %>
+
+<script src="js/imgLiquid-min.js"></script>

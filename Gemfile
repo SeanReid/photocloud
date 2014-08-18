@@ -30,6 +30,7 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-flickr'
 gem 'flickraw'
+gem 'dropbox-sdk'
 gem 'omniauth-facebook'
 gem 'omniauth-dropbox'
 gem 'dotenv-rails', group: [:development, :test]
@@ -37,3 +38,7 @@ gem 'fancybox2-rails', '~> 0.2.8'
 gem "koala", "~> 1.10.0rc"
 
 gem 'pry', group: [:development, :test]
+
+gem 'bourbon'
+gem 'neat'
+gem 'bitters'

@@ -7,11 +7,27 @@ class User < ActiveRecord::Base
          :omniauthable, :omniauth_providers => [:flickr, :facebook, :dropbox]
 
   def flickr
-    connections.find_by(provider: 'flickr')
+    connections.find_by provider: 'flickr'
   end
 
   def flickr?
     flickr.present?
+  end
+
+  def facebook
+    connections.find_by provider: 'facebook'
+  end
+
+  def facebook?
+    facebook.present?
+  end
+
+  def dropbox
+    connections.find_by provider: 'dropbox'
+  end
+
+  def dropbox?
+    dropbox.present?
   end
 
 end
