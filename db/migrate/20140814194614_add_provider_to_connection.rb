@@ -1,4 +1,4 @@
-class AddProviderToConnection < ActiveRecord::Migration
+dclass AddProviderToConnection < ActiveRecord::Migration
   def change
     add_column :connections, :provider, :string
   end

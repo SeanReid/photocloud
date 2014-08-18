@@ -27,6 +27,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    addressable (2.3.6)
     arel (5.0.1.20140414130214)
     bcrypt (3.1.7)
     builder (3.2.2)
@@ -51,6 +52,8 @@ GEM
       dotenv (= 0.11.1)
     erubis (2.7.0)
     execjs (2.2.1)
+    fancybox2-rails (0.2.8)
+      railties (>= 3.1.0, < 5.0)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
     flickraw (0.9.8)
@@ -65,6 +68,10 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.1)
     jwt (1.0.0)
+    koala (1.10.0)
+      addressable
+      faraday
+      multi_json
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -169,9 +176,11 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   devise
   dotenv-rails
+  fancybox2-rails (~> 0.2.8)
   flickraw
   jbuilder (~> 2.0)
   jquery-rails
+  koala (~> 1.10.0rc)
   omniauth
   omniauth-dropbox
   omniauth-facebook

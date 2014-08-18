@@ -1,0 +1,14 @@
+<h1>FB:</h1>
+<% @fb_photos.each do |album| %>
+  <% album["photos"]["data"].each do |photo| %>
+    <%= image_tag photo["source"], class: 'my-img' %>
+  <% end %>
+<% end %>
+<h1> Flickr: </h1>
+<div class="thumbnail">
+<%  @photos.photo.take(6).each do |photo| %>
+  <%=
+    info = flickr.photos.getInfo photo_id: photo.id
+    image_tag FlickRaw.url_b(info), class: 'my-img fancybox'
+   %>
+<% end %>

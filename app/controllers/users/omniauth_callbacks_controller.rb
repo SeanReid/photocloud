@@ -8,13 +8,31 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     token = deets.fetch("credentials").fetch("token")
     # find/create user
 
-    connection = Connection.find_by(uid: uid, provider: "flickr")
+    connection = current_user.connections.find_by uid: uid, provider: "flickr"
     if connection
-      connection.update(name: name, token: token)
+      connection.update name: name, token: token
     else
-      connection = Connection.create!(uid: uid, name: name, token: token, provider: "flickr")
+      connection = current_user.connections.create! uid: uid, name: name, token: token, provider: "flickr"
     end
-    # sign_in_and_redirect
-    set_flash_message(:notice, :success, :kind => "Flickr") if is_navigational_format?
+    redirect_to photos_path
+    set_flash_message :notice, :success, :kind => "Flickr" if is_navigational_format?
+  end
+
+  def facebook
+    # get values from request
+    deets = request.env["omniauth.auth"]
+    uid = deets["uid"]
+    name = deets.fetch("info").fetch("name")
+    token = deets.fetch("credentials").fetch("token")
+    # find/create user
+
+    connection = current_user.connections.find_by uid: uid, provider: "facebook"
+    if connection
+      connection.update name: name, token: token
+    else
+      connection = current_user.connections.create! uid: uid, name: name, token: token, provider: "facebook"
+    end
+    redirect_to photos_path
+    set_flash_message(:notice, :success, :kind => "Facebook") if is_navigational_format?
   end
 end
