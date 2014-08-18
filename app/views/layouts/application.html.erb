@@ -16,6 +16,8 @@
     <%= link_to user_omniauth_authorize_path(:facebook) do %>
       <%= image_tag "http://sociallygold.com/wp-content/uploads/2014/05/facebook-login-button.png" %>
     <% end %>
+    <%= link_to "Connect to Dropbox", user_omniauth_authorize_path(:dropbox) %>
+
   <% end %>
   <% if notice %><p class="notice"><%= notice %></p><% end %>
   <% if notice %><font color="red" class="alert"><%= alert %></font><%end %>
