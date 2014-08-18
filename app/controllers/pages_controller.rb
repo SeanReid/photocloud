@@ -21,9 +21,4 @@ class PagesController < ApplicationController
       redirect_to root_path, notice: "Please connect to Flickr"
     end
   end
-
-  # def private
-  #   fb = Koala::Facebook::API.new(current_user.token)
-  #   @friends = current_user.facebook.get_connection "me", "album", fields: "name, photos.fields(source)"
-  # end
 end
