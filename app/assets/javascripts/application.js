@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require fancybox
+//= require jquery.nailthumb.1.1.min
 //= require_tree

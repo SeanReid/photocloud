@@ -25,8 +25,8 @@ class PagesController < ApplicationController
 
     db = DropboxClient.new(db_session)
 
-    @db_photos = db.metadata("/Photos")["contents"].take(5).map do |item|
-      db.thumbnail(item["path"], "l")
+    @db_photos = db.metadata("/Photos")["contents"].take(6).map do |item|
+      {thumb: db.thumbnail(item["path"], "l"), url: db.media(item["path"])["url"] }
     end
 
   end
