@@ -1,7 +1,10 @@
+.thumb {
+	border: 2px solid;
+	border-color: #ccc #aaa #aaa #ccc;
+}
 .thumb-container,
 .thumb-inner,
 .thumb-img {
-	border: 0;
 	display: block;
 	display: inline-block;
 	height: 100%;
@@ -15,11 +18,11 @@
 
 .thumb-container {
 	background: #FFFFFF;
-	border: 1px solid;
+	border: 2px solid;
 	border-color: #ccc #aaa #aaa #ccc;
 	height: 150px;
 	margin: 10px;
-	padding: 6px;
+	padding: 4px;
 	width: 150px;
 }
 

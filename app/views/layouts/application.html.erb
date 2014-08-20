@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  
+
   <% if user_signed_in? %>
     Signed in as <%= current_user.email %>
   <% end %>
@@ -15,7 +15,7 @@
     <%= link_to "Not You?", destroy_user_session_path, :method => :delete %>
     <%= link_to "Connect to Flickr", user_omniauth_authorize_path(:flickr) unless current_user.flickr? %>
     <%= link_to "Connect to FB", user_omniauth_authorize_path(:facebook) unless current_user.facebook?  %>
-    <%= link_to "Connect to Dropbox", user_omniauth_authorize_path(:dropbox) unless current_user.dropbox? %>
+    <%= link_to "Connect to Dropbox", user_omniauth_authorize_path(:dropbox) %>
 
   <% end %>
   <% if notice %><p class="notice"><%= notice %></p><% end %>

@@ -37,6 +37,10 @@ gem 'dotenv-rails', group: [:development, :test]
 gem 'fancybox2-rails', '~> 0.2.8'
 gem "koala", "~> 1.10.0rc"
 
+group :production do
+  gem 'rails_12factor'
+end
+
 gem 'pry', group: [:development, :test]
 
 gem 'bourbon'

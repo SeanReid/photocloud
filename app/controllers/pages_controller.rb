@@ -24,16 +24,38 @@ class PagesController < ApplicationController
 
 
     db = DropboxClient.new(db_session)
+    db.extend DropBoxClientMods
 
-    @db_photos = db.metadata("/Photos")["contents"].take(6).map do |item|
-      {thumb: db.thumbnail(item["path"], "l"), url: db.media(item["path"])["url"] }
+    @db_photos = db.metadata("/Photos", 10000, true, nil, nil, false)
+    @db_photos = @db_photos["contents"].take(6).map do |item|
+
+      db.media(item["path"])["url"]
     end
-
   end
 
   def check_for_flickr
     unless current_user.flickr?
       redirect_to root_path, notice: "Please connect to Flickr"
+    end
+  end
+
+
+  module DropBoxClientMods
+    def metadata(path, file_limit=25000, list=true, hash=nil, rev=nil, include_deleted=false)
+      params = {
+        "file_limit" => file_limit.to_s,
+        "list" => list.to_s,
+        "include_deleted" => include_deleted.to_s,
+        "hash" => hash,
+        "rev" => rev,
+        "include_media_info" => true
+      }
+
+      response = @session.do_get "/metadata/#{@root}#{format_path(path)}", params
+      if response.kind_of? Net::HTTPRedirection
+        raise DropboxNotModified.new("metadata not modified")
+      end
+      Dropbox::parse_response(response)
     end
   end
 end
