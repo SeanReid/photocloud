@@ -1,7 +1,6 @@
 module Dropbox
   class DropboxClient
     def metadata(path, file_limit=25000, list=true, hash=nil, rev=nil, include_deleted=false)
-      binding.pry
       params = {
         "file_limit" => file_limit.to_s,
         "list" => list.to_s,

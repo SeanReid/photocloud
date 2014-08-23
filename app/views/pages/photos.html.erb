@@ -1,34 +1,9 @@
-<h1>Dropbox:</h1>
-
-
-<% @db_photos.each do |url| %>
+<h1><%= pluralize @photos.count, 'photos' %> found, from as early as <%= @photos.first.taken_date.strftime("%b %e,  %Y %l:%M %p") %>
+</h1>
+<% @photos.take(150).each do |pics| %>
 <div class="thumb">
-  <%= link_to url, class: "fancybox" do %>
-    <%= image_tag url %>
+  <%= link_to pics[:url], class: 'fancybox' do %>
+    <%= image_tag pics[:url], class: "", alt: 'from Facebook' %>
   <% end %>
 </div>
-<% end %>
-<br clear='all'/>
-
-<h1> Flickr: </h1>
-<div class="thumbnail">
-<%  @photos.photo.take(6).each do |photo| %>
-  <div class="thumb">
-    <% info = flickr.photos.getInfo photo_id: photo.id %>
-     <%= link_to FlickRaw.url_b(info), class: 'fancybox' do %>
-       <%= image_tag FlickRaw.url_b(info)%>
-     <% end %>
-  </div>
-<% end %>
-<br clear='all'/>
-
-<h1>FB:</h1>
-<% @fb_photos.each do |album| %>
-  <% album["photos"]["data"].each do |photo| %>
-    <div class="thumb" >
-        <%= link_to photo["source"], class: 'fancybox ' do %>
-          <%= image_tag photo["source"], class:"", alt: "from Facebook" %>
-        <% end %>
-    </div>
-  <% end %>
 <% end %>
