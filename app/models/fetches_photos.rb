@@ -44,7 +44,7 @@ class FetchesPhotos
     FlickRaw.shared_secret=ENV["FLICKR_SECRET"]
 
     flickr_uid = current_user.flickr.uid
-    @flickr_photos = flickr.photos.search user_id: flickr_uid, per_page: 100
+    @flickr_photos = flickr.photos.search user_id: flickr_uid, per_page: 500
     @flickr_photos.photo.each do |flickr_photo|
       uid = flickr_photo.id
       info = flickr.photos.getInfo photo_id: flickr_photo.id
@@ -75,9 +75,9 @@ class FetchesPhotos
     db.extend DropBoxClientMods
 
     @db_photos = db.metadata("/Photos", 10000, true, nil, nil, false)
-    @db_photos = @db_photos["contents"].take(150).map do |photo|
+    @db_photos = @db_photos["contents"].map do |photo|
       url = db.media(photo["path"])["url"]
-      
+
       if photo['photo_info']['time_taken'].nil?
         taken = DateTime.parse photo['modified']
       else

@@ -15,10 +15,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       connection = current_user.connections.create! uid: uid, name: name, token: token, provider: "flickr"
     end
 
+    redirect_to photos_path
+
     #FetchWorker.peform_async(user_id: current_user.id)  # => Sidekiq
     FetchesPhotos.new(current_user).fetch_flickr
 
-    redirect_to root_path
     set_flash_message :notice, :success, :kind => "Flickr" if is_navigational_format?
   end
 
@@ -37,9 +38,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       connection = current_user.connections.create! uid: uid, name: name, token: token, provider: "facebook"
     end
 
+    redirect_to photos_path
+
     FetchesPhotos.new(current_user).fetch_facebook
 
-    redirect_to root_path
     set_flash_message(:notice, :success, :kind => "Facebook") if is_navigational_format?
   end
 
@@ -58,10 +60,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       connection = current_user.connections.create! uid: uid, name: name, token: token, provider: "dropbox"
     end
 
+    redirect_to photos_path
+
     FetchesPhotos.new(current_user).fetch_dropbox
 
-
-    redirect_to root_path
     set_flash_message(:notice, :success, :kind => "dropbox") if is_navigational_format?
   end
 end
