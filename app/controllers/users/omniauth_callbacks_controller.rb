@@ -15,8 +15,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       connection = current_user.connections.create! uid: uid, name: name, token: token, provider: "flickr"
     end
 
-    FetchesWorkers.perform_async(current_user.id)  # => Sidekiq
-    # FetchesPhotos.new(current_user).fetch_flickr
+    FetchesWorkers.perform_async(current_user.id)
 
     redirect_to photos_path
 
@@ -38,7 +37,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       connection = current_user.connections.create! uid: uid, name: name, token: token, provider: "facebook"
     end
 
-    FetchesPhotos.new(current_user).fetch_facebook
+    FetchesWorkers.perform_async(current_user.id)
 
     redirect_to photos_path
 
@@ -61,7 +60,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       connection = current_user.connections.create! uid: uid, name: name, token: token, secret: secret, provider: "dropbox"
     end
 
-    FetchesPhotos.new(current_user).fetch_dropbox
+    FetchesWorkers.perform_async(current_user.id)
 
     redirect_to photos_path
 
