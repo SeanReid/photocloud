@@ -38,6 +38,8 @@ GEM
       sass (~> 3.2)
       thor
     builder (3.2.2)
+    celluloid (0.15.2)
+      timers (~> 1.1.0)
     coderay (1.1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -46,6 +48,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.1)
+    connection_pool (2.0.0)
     devise (3.2.4)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -66,6 +69,9 @@ GEM
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
     flickraw (0.9.8)
+    foreman (0.74.0)
+      dotenv (~> 0.11.1)
+      thor (~> 0.19.1)
     hashie (3.2.0)
     hike (1.2.3)
     i18n (0.6.11)
@@ -77,6 +83,9 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.1)
     jwt (1.0.0)
+    kaminari (0.16.1)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     koala (1.10.0)
       addressable
       faraday
@@ -150,6 +159,9 @@ GEM
     rake (10.3.2)
     rdoc (4.1.1)
       json (~> 1.4)
+    redis (3.1.0)
+    redis-namespace (1.5.1)
+      redis (~> 3.0, >= 3.0.4)
     sass (3.2.19)
     sass-rails (4.0.3)
       railties (>= 4.0.0, < 5.0)
@@ -159,6 +171,12 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    sidekiq (3.2.2)
+      celluloid (>= 0.15.2)
+      connection_pool (>= 2.0.0)
+      json
+      redis (>= 3.0.6)
+      redis-namespace (>= 1.3.1)
     slop (3.6.0)
     spring (1.1.3)
     sprockets (2.11.0)
@@ -173,6 +191,7 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.4)
     tilt (1.4.1)
+    timers (1.1.0)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
@@ -198,8 +217,10 @@ DEPENDENCIES
   dropbox-sdk
   fancybox2-rails (~> 0.2.8)
   flickraw
+  foreman
   jbuilder (~> 2.0)
   jquery-rails
+  kaminari
   koala (~> 1.10.0rc)
   neat
   omniauth
@@ -212,6 +233,7 @@ DEPENDENCIES
   rails_12factor
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
+  sidekiq
   spring
   turbolinks
   uglifier (>= 1.3.0)

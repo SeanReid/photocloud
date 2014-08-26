@@ -5,27 +5,15 @@
   <%= stylesheet_link_tag    'application', media: 'all'  %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
-  <meta name="viewport" content="initial-scale=1">
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+
 </head>
 <body>
 
-  <% if user_signed_in? %>
-    Signed in as <%= current_user.email %>
-  <% end %>
-  <% if user_signed_in? %>
-    <%= link_to "Not You?", destroy_user_session_path, :method => :delete %>
-    <%= link_to "Connect to Flickr", user_omniauth_authorize_path(:flickr) unless current_user.flickr? %>
-    <%= link_to "Connect to FB", user_omniauth_authorize_path(:facebook) unless current_user.facebook?  %>
-    <%= link_to "Connect to Dropbox", user_omniauth_authorize_path(:dropbox) unless current_user.dropbox? %>
-
-  <% end %>
-
-
-  <% if notice %><p class="notice"><%= notice %></p><% end %>
+  <% if alert %><p class="notice"><%= notice %></p><% end %>
   <% if notice %><font color="red" class="alert"><%= alert %></font><%end %>
 
-
-<%= yield %>
+  <%= yield %>
 
 </body>
 </html>

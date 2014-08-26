@@ -2,19 +2,30 @@
 <source src="http://ia600904.us.archive.org/31/items/BrightSkyAndClouds/SkyAndCloudsh264.mp4" type="video/mp4">
 </video>
 
-<h2>Sign up</h2>
+<div class="login">
+  <div class="login-screen">
+    <div class="app-title">
+      <h1>Sign Up</h1>
+      <br />
+    </div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+    <div class="login-form">
+      <div class="control-group">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= f.email_field :email, placeholder: "Email", autofocus: true %>
+      </div>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div>
+      <div class="control-group">
+        <%= f.password_field :password, placeholder: "Password", autocomplete: "off" %>
+      </div>
 
-  <div><%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %></div>
+      <div class="control-group">
+        <%= f.password_field :password_confirmation, placeholder: "Confirm Password", autocomplete: "off" %></div>
+      </div>
 
-  <div><%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
-
-  <div><%= f.submit "Sign up" %></div>
-<% end %>
+        <%= f.submit "Sign Up", class: "btn btn-primary btn-large btn-block" %>
+      <% end %>
+      <%= link_to "Already Signed Up?", new_user_session_path %>
+    </div>
+  </div>
+</div>

@@ -1,11 +1,14 @@
 <%= render partial: 'layouts/navbar' %>
 
-<h1><%= pluralize @photos.count, 'photos' %> found, from as early as <%= @photos.first.taken_date.strftime("%b %e,  %Y %l:%M %p") %>
-</h1>
-<% @photos.take(100).each do |pics| %>
-<div class="thumb">
-  <%= link_to pics[:url], class: 'fancybox' do %>
-    <%= image_tag pics[:url], class: "", alt: 'from Facebook' %>
+<article >
+<div class='photos'>
+<% @photos.each do |pics| %>
+<div class='thumb'>
+	  <%= link_to pics[:url], class: 'fancybox' do %>
+    <%= image_tag pics[:url] %>
   <% end %>
 </div>
 <% end %>
+</div>
+</article>
+<%= paginate @photos %>

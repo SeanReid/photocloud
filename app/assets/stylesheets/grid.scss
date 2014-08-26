@@ -1,0 +1,20 @@
+$mobile: new-breakpoint(max-width 450px 4);
+
+article {
+  margin-top: 2em;
+  @include outer-container;
+  .photos {
+    @include span-columns(12);
+    .thumb {
+
+      margin-bottom: 2em;
+
+
+      @include span-columns(3);
+      @include omega(4n);
+      @include media($mobile) {
+        @include span-columns(12);
+      }
+    }
+  }
+}

@@ -36,6 +36,8 @@ gem 'omniauth-dropbox'
 gem 'dotenv-rails', group: [:development, :test]
 gem 'fancybox2-rails', '~> 0.2.8'
 gem "koala", "~> 1.10.0rc"
+gem 'sidekiq'
+gem 'foreman'
 
 group :production do
   gem 'rails_12factor'
@@ -46,3 +48,4 @@ gem 'pry', group: [:development, :test]
 gem 'bourbon'
 gem 'neat'
 gem 'bitters'
+gem 'kaminari'

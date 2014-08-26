@@ -10,7 +10,6 @@ class FetchesPhotos
   end
 
   def fetch_all
-
     fetch_facebook if current_user.facebook?
     fetch_flickr if current_user.flickr?
     fetch_dropbox if current_user.dropbox?
@@ -33,12 +32,9 @@ class FetchesPhotos
         end
       end
     end
-
-
   end
 
   def fetch_flickr
-
 
     FlickRaw.api_key=ENV["FLICKR_API_KEY"]
     FlickRaw.shared_secret=ENV["FLICKR_SECRET"]
@@ -57,29 +53,24 @@ class FetchesPhotos
       else
         current_user.flickr.photos.create! uid: uid, taken_date: taken, url: url
       end
-
     end
-
-
   end
 
   def fetch_dropbox
 
-
     db_session = DropboxSession.new ENV["DB_KEY"], ENV["DB_SECRET"]
-    db_creds= {"token"=>"3pbq3ydr6guft8h4", "secret"=>"0c5bhnpagl3wt8x"} ## we don't have a place for the "secret"
+    db_creds= {'token' => current_user.dropbox.token, 'secret' => current_user.dropbox.secret} ## we don't have a place for the "secret"
     db_session.set_access_token db_creds["token"], db_creds["secret"]
-
 
     db = DropboxClient.new(db_session)
     db.extend DropBoxClientMods
 
-    @db_photos = db.metadata("/Photos", 10000, true, nil, nil, false)
+    @db_photos = db.metadata("/Camera Uploads", 10000, true, nil, nil, false)
     @db_photos = @db_photos["contents"].map do |photo|
       url = db.media(photo["path"])["url"]
 
       if photo['photo_info']['time_taken'].nil?
-        taken = DateTime.parse photo['modified']
+        taken = DateTime.parse photo['client_mtime']
       else
         taken = DateTime.parse photo['photo_info']['time_taken']
       end

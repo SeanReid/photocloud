@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
-  get 'page/photos'
-
   get "/photos" => "pages#photos"
 
   devise_for :users, :controllers=>{:omniauth_callbacks=>"users/omniauth_callbacks"}
-  root to: "home#index"
+  root to: "pages#photos"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
