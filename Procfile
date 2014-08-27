@@ -1,2 +1,3 @@
-web:    bundle exec rails s -p $PORT
+web:    bundle exec rails s
 worker: bundle exec sidekiq
+clock:  bundle exec clockwork config/clock.rb
