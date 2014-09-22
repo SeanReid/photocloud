@@ -1,5 +1,5 @@
 SortaCloud is a web application for anyone who has photos across multiple cloud services. Logging in to many different accounts just to find a particular photo can be a hassle. SortaCloud is a place you can view all your photos across all cloud services, rather than just one. Once logged in you are able to connect each cloud service. Currently, SortaCloud support Facebook, Dropbox and Flickr. The future will allow for additional services and the ability to create/share galleries.
 
-This app uses clockwork to time sidekiq jobs to constantly check for new photos a user has uploaded. This is my favorite part! 
+This app uses Clockwork to time Sidekiq jobs to constantly check for new photos a user has uploaded. This is my favorite part! 
 
-On dropbox you need to have your photos in the 'camera uploads' folder. Other folders on Dropbox have mixed results when it comes to displaying photos with the correct orientation. Currently, this is the only folder with successful results. Seems to work best if you are using photos actually uploaded using the iOs/Android app to sync photos. Moving photos from folder to folder can have the same orientation issue.
+On Dropbox you need to have your photos in the 'camera uploads' folder. Other folders on Dropbox have mixed results when it comes to displaying photos with the correct orientation. Currently, this is the only folder with successful results. Seems to work best if you are using photos actually uploaded using the iOs/Android app to sync photos. Moving photos from folder to folder can have the same orientation issue.
