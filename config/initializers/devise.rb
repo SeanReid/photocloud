@@ -229,7 +229,7 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
-  config.omniauth :flickr, ENV["FLICKR_API_KEY"], ENV["FLICKR_SECRET"]
+  config.omniauth :flickr, ENV["FLICKR_API_KEY"], ENV["FLICKR_SECRET"], scope: 'read'
   config.omniauth :facebook, ENV["FB_KEY"], ENV["FB_SECRET"], scope: 'public_profile,user_friends,user_photos'
   config.omniauth :dropbox, ENV["DB_KEY"], ENV["DB_SECRET"]
 
