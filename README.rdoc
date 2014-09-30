@@ -6,7 +6,7 @@ On Dropbox you need to have your photos in the 'camera uploads' folder. Other fo
 
 == Instructions
 
-After cloning open 3 tabs and ever these commands:
+After cloning open 3 tabs in terminal/console (not web browser) and enter these commands:
 
 Tab 1. redis-server
    You can be in any directory.
@@ -18,4 +18,7 @@ Tab 3. rake db:migrate
 
 Next visit http://localhost:3000
 
-Sign-up for a new acct or use an existing acct.
+Sign-up for a new acct and use your photos or use an existing acct.
+
+user: sean@sean.com
+password: seansean
