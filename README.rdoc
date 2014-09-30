@@ -3,3 +3,19 @@ SortaCloud is a web application for anyone who has photos across multiple cloud 
 This app uses Clockwork to time Sidekiq jobs to constantly check for new photos a user has uploaded. This is my favorite part! 
 
 On Dropbox you need to have your photos in the 'camera uploads' folder. Other folders on Dropbox have mixed results when it comes to displaying photos with the correct orientation. Currently, this is the only folder with successful results. Seems to work best if you are using photos actually uploaded using the iOs/Android app to sync photos. Moving photos from folder to folder can have the same orientation issue.
+
+== Instructions
+
+After cloning open 3 tabs and ever these commands:
+
+Tab 1. redis-server
+   You can be in any directory.
+Tab 2. tail -f log/development.log
+   This will allow to view background jobs in the console. This step is optional.
+Tab 3. rake db:migrate
+       rake db:seed
+       foreman start
+
+Next visit http://localhost:3000
+
+Sign-up for a new acct or use an existing acct.
