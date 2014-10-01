@@ -12,7 +12,8 @@ Tab 1. redis-server
    You can be in any directory.
 Tab 2. tail -f log/development.log
    This will allow to view background jobs in the console. This step is optional.
-Tab 3. rake db:migrate
+Tab 3. bundle
+       rake db:migrate
        rake db:seed
        foreman start
 
