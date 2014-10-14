@@ -7,6 +7,7 @@ On Dropbox you need to have your photos in the 'camera uploads' folder. Other fo
 == Instructions
 
 Ruby version 2.1.2
+
 After cloning open 3 tabs in terminal/console (not web browser) and enter these commands:
 
 Tab 1. redis-server
